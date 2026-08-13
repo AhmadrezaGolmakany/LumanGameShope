@@ -34,7 +34,7 @@ LumanGameShope/
 | مستندسازی API | Swagger / Swashbuckle |
 | نسخه‌بندی API | Microsoft.AspNetCore.Mvc.Versioning |
 | کانتینر‌سازی | Docker |
-| هاستینگ | Liara |
+| FrontEnd| Blazor WebAssembly |
 
 ---
 
