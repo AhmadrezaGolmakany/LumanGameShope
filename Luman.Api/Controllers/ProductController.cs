@@ -25,7 +25,7 @@ namespace Luman.Api.Controllers
         [HttpGet("GetAllProductForIndex")]
         public IActionResult GetAllProductForIndex()
         {
-            return Ok(_productService.GetAllProduct());
+            return Ok(_productService.GetAllForIndex());
         }
 
         [HttpGet("GetAllCategoryForIndex")]
@@ -95,5 +95,8 @@ namespace Luman.Api.Controllers
             }
         }
 
+
+
+       
     }
 }

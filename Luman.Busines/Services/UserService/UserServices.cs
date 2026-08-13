@@ -144,6 +144,7 @@ namespace Luman.Busines.Services.UserService
         public bool IsExsitEmail(string email)
         {
             return _context.users.Any(u => u.Email == email);
+             
         }
 
         public  bool IsExsitUserName(string username)

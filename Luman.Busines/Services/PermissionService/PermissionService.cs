@@ -38,7 +38,7 @@ namespace Luman.Busines.Services.PermissionService
             var userId = _context.users.Single(u => u.UserName == username).UserId;
 
 
-            List<int> userRoles = _context.userRoles.Where(u => u.UserId == userId)
+            var userRoles = _context.userRoles.Where(u => u.UserId == userId)
                 .Select(r => r.RoleId).ToList();
 
             if (!userRoles.Any())

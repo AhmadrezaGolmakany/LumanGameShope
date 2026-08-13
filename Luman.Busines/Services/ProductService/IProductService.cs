@@ -53,7 +53,13 @@ namespace Luman.Busines.Services.ProductService
 
         #endregion
 
+        #region product
+        List<ProductForIndex> GetAllForIndex();
 
+
+
+
+        #endregion
 
 
     }

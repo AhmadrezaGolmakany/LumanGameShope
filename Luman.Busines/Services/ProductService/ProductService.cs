@@ -41,7 +41,7 @@ namespace Luman.Busines.Services.ProductService
 
         public void AddToFavorite(int proid, int userid)
         {
-           
+
             // افزودن به دیتابیس
             FavoriteProduct favoriteProduct = new()
             {
@@ -78,13 +78,25 @@ namespace Luman.Busines.Services.ProductService
 
         public bool existingFavorite(int userid, int proid)
         {
-            _context.favoriteProducts.FirstOrDefault(f=>f.UserId == userid && f.ProductId == proid);
+            _context.favoriteProducts.FirstOrDefault(f => f.UserId == userid && f.ProductId == proid);
             return true;
         }
 
         public List<Category> GetAllCategories()
         {
             return _context.categories.ToList();
+        }
+
+        public List<ProductForIndex> GetAllForIndex()
+        {
+            List<ProductForIndex> productForIndex = new List<ProductForIndex>();
+            var pe = _context.products.ToList();
+            foreach (var item in pe)
+            {
+                var p = new ProductForIndex() { ProductId = item.ProductId, Name = item.Name, Price = item.Price, Imagename = item.imagename };
+                productForIndex.Add(p);
+            }
+            return productForIndex;
         }
 
         public List<Product> GetAllProduct()
@@ -116,14 +128,14 @@ namespace Luman.Busines.Services.ProductService
 
         public List<Product> GetUserFavorites(int userid)
         {
-            bool userExists =  _context.users.Any(u => u.UserId == userid);
+            bool userExists = _context.users.Any(u => u.UserId == userid);
             if (!userExists)
             {
                 throw new Exception("کاربر یافت نشد.");
             }
 
             // گرفتن لیست علاقه‌مندی‌ها
-            var favorites =  _context.favoriteProducts
+            var favorites = _context.favoriteProducts
                 .Where(fp => fp.UserId == userid)
                 .Include(fp => fp.Product) // بارگذاری اطلاعات محصول
                 .Select(fp => fp.Product)
@@ -134,7 +146,7 @@ namespace Luman.Busines.Services.ProductService
 
         public bool IsExistproduct(int proid)
         {
-            _context.products.Any(p=>p.ProductId == proid);
+            _context.products.Any(p => p.ProductId == proid);
             return true;
         }
 
